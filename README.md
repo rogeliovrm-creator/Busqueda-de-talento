@@ -1,21 +1,13 @@
-# NBG Talent Outreach — versión 7
+# NBG Talent Outreach v8 (Firebase + GitHub + Vercel)
 
-Sitio estático listo para publicar en GitHub y Vercel. No necesita instalar dependencias.
+**Comienza por `CONFIGURACION.md`.**
 
-## Subir a GitHub
-1. Crea un repositorio en GitHub (recomendado: **privado**).
-2. Sube el archivo `index.html` en la raíz del repositorio. Puedes subir también este README.
-3. Guarda los cambios (Commit changes).
+Archivos principales:
 
-## Publicar en Vercel
-1. En Vercel, selecciona **Add New > Project**.
-2. Importa el repositorio de GitHub.
-3. Selecciona **Framework Preset: Other**, sin Build Command y con directorio raíz `/`.
-4. Presiona **Deploy**.
+- `index.html`: página de prospección, plantillas y casting.
+- `firebase-config.js`: aquí se pega la configuración de TU proyecto Firebase.
+- `firebase-sync.js`: inicio de sesión con Google y sincronización Firestore.
+- `firebase.json`: alternativa para Firebase Hosting gratuito.
+- `firestore.rules`: reglas para que solo los correos autorizados puedan acceder a los candidatos y capturas.
 
-## Datos y precauciones
-- Los perfiles, plantillas y registros se guardan en **el navegador y dominio** de cada usuario (localStorage; las capturas pueden utilizar IndexedDB).
-- Al pasar de una versión local (`file://`) al sitio de Vercel (`https://`), **los registros no se migran solos**. Antes de cambiar de sitio, exporta tu lista de contactos en CSV y los registros de casting (incluidas capturas) en JSON; después impórtalos desde el nuevo dominio.
-- Publicar el sitio **no crea una base de datos en línea ni sincroniza usuarios/dispositivos**. Para eso se requiere un backend y autenticación.
-- La imagen de instrucciones está incorporada dentro de `index.html`, por lo que **no necesitas cargarla por separado**.
-- El botón de abrir un perfil registra su apertura para seguimiento, **no demuestra que se haya enviado un mensaje**.
+Se puede usar localmente, pero **la sincronización no funciona hasta configurar Firebase**. No subas datos personales de los candidatos al repositorio GitHub: se guardarán en Firestore.

@@ -1,0 +1,25 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Sustituye el correo de ejemplo por tu Gmail real (en minúsculas).
+    // Puedes añadir más correos de colaboradores autorizados.
+    function equipoAutorizado() {
+      return request.auth != null
+        && request.auth.token.email_verified == true
+        && request.auth.token.email in ['CAMBIA_POR_TU_CORREO@gmail.com'];
+    }
+    match /outreach_contacts/{username} {
+      allow read, write: if equipoAutorizado();
+    }
+    match /casting_records/{username} {
+      allow read, write: if equipoAutorizado();
+    }
+    match /casting_shots/{username} {
+      allow read, write: if equipoAutorizado();
+    }
+    match /app_settings/{docId} {
+      allow read, write: if equipoAutorizado() && docId == 'templates';
+    }
+    // Todo lo demás queda bloqueado por defecto.
+  }
+}

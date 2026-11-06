@@ -1,0 +1,28 @@
+NBG TALENT OUTREACH — FIREBASE CONFIGURADO
+
+La configuración de la app web registrada en el proyecto nbg-talent-outreach
+ya está incluida en firebase-config.js. No necesitas instalar npm.
+
+PARA ACTIVAR LA SINCRONIZACIÓN:
+1. Firebase Console > Authentication > Sign-in method > Google: habilita Google.
+2. Firebase Console > Firestore Database > Reglas: publica firestore.rules,
+   SUSTITUYENDO primero CAMBIA_POR_TU_CORREO@gmail.com por el correo de Google
+   con el que entrarás a NBG Talent Outreach. No uses reglas públicas.
+3. Publica index.html, firebase-config.js y firebase-sync.js EN LA MISMA
+   carpeta raíz de tu sitio. Puedes usar Firebase Hosting o el alojamiento
+   comercial que prefieras. No subas solamente el HTML.
+4. Si tu sitio no está hospedado en Firebase Hosting, autoriza el dominio de
+   tu web en Firebase Console > Authentication > Settings > Authorized domains.
+5. Abre tu sitio por HTTPS e inicia sesión con Google.
+6. Antes de migrar, exporta CSV de prospección y JSON de casting de la página
+   anterior. Luego usa "Migrar datos del navegador" (si la versión anterior
+   estaba en ese mismo origen web) o importa los respaldos.
+
+IMPORTANTE:
+- El inicio de sesión y la sincronización con Firestore no se pueden probar
+  hasta publicar el sitio y habilitar Authentication y las reglas reales.
+- El objeto firebaseConfig es público; NO contiene contraseñas ni claves de
+  cuenta de servicio.
+- Para publicar por Firebase CLI, hay una guía detallada en CONFIGURACION.md.
+- Si desplegaste reglas que todavía tienen el correo de ejemplo, nadie
+  podrá guardar o leer registros en la nube.
